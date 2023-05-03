@@ -9,7 +9,7 @@ const Read = () => {
   const {loading, users, searchData} = useSelector((state) => state.app);
   const [Id, setId] = useState();
   const [PopUp, setPopUp] = useState(false);
-
+  const [radio, setRadio] = useState("");
   useEffect(() => {
     dispatch(showUser());
   }, []);
@@ -20,6 +20,32 @@ const Read = () => {
 
   return (
     <React.Fragment>
+      <div className="radio flex rad">
+        <input
+          type="radio"
+          name="gender"
+          checked={radio === ""}
+          onChange={(e) => setRadio("")}
+        />
+        <label>All</label>
+        <input
+          type="radio"
+          name="gender"
+          value="Male"
+          checked={radio === "Male"}
+          onChange={(e) => setRadio(e.target.value)}
+        />
+        <label>Male</label>
+        <input
+          type="radio"
+          value="Female"
+          name="gender"
+          checked={radio === "Female"}
+          onChange={(e) => setRadio(e.target.value)}
+        />
+        <label>Female</label>
+      </div>
+
       {PopUp && <Model id={Id} showpop={PopUp} setpop={setPopUp} />}
       <section className="grid-container">
         {users &&
@@ -31,6 +57,15 @@ const Read = () => {
                 return item.name
                   .toLowerCase()
                   .includes(searchData.toLowerCase());
+              }
+            })
+            .filter((item) => {
+              if (radio === "Male") {
+                return item.gender === radio;
+              } else if (radio === "Female") {
+                return item.gender === radio;
+              } else {
+                return item;
               }
             })
             .map((item) => (

@@ -18,7 +18,7 @@ nav.navbar > div a {
   margin-left: 1rem;
   text-decoration: none;
   margin-right: 20px;
-  background-color:rgb(80, 133, 231);
+  background-color: rgb(80, 133, 231);
   border-radius: 1rem;
   padding: 0.6rem 0.7rem;
   color: aliceblue;
@@ -140,4 +140,20 @@ section.grid-container .card > div button {
   text-align: center;
   padding: 2rem 2rem;
   border-radius: 1rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rad input[type="radio"] {
+  border: 0px;
+  width: 1rem;
+  height: 1rem;
+  outline: none;
+  cursor: pointer;
 }
